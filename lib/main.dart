@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             initialRoute: SplashView.route,
             theme: ThemeData(
                 scaffoldBackgroundColor: AppColors.scaffoldBg,
-                // useMaterial3: true,
+                useMaterial3: true,
                 fontFamily: 'SF-Pro-Display'),
           );
         });

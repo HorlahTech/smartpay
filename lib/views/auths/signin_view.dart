@@ -5,8 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smartpay/routes/app_routes.dart';
-import 'package:smartpay/views/auths/signin_view.dart';
-import 'package:smartpay/views/auths/verify_email_view.dart';
+import 'package:smartpay/views/auths/signup_view.dart';
 import 'package:smartpay/widgets_utils/app_buttons.dart';
 
 import 'package:smartpay/widgets_utils/app_colors.dart';
@@ -21,14 +20,14 @@ import 'package:smartpay/widgets_utils/input_text_fields.dart';
 import 'package:smartpay/widgets_utils/screen_body.dart';
 import 'package:smartpay/widgets_utils/spacing.dart';
 
-class SignUpView extends StatefulWidget {
-  const SignUpView({super.key});
-  static const String route = "signup_view";
+class SignInView extends StatefulWidget {
+  const SignInView({super.key});
+  static const String route = "signin_view";
   @override
-  State<SignUpView> createState() => _SignUpViewState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _SignInViewState extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
     return ScreenBody(
@@ -37,40 +36,41 @@ class _SignUpViewState extends State<SignUpView> {
         children: [
           const CustomBackIcon(),
           Spacing.sizedBox(height: 20.h),
-          const Text.rich(TextSpan(
-              text: 'Create a ',
-              style: TextStyle(
-                  fontSize: 24,
-                  color: AppColors.black,
-                  fontWeight: FontWeight.w700),
-              children: [
-                TextSpan(
-                  text: 'Smartpay ',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w700),
-                ),
-                TextSpan(
-                  text: '\naccount',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w700),
-                )
-              ])),
+          const AppText(
+            text: 'Hi There! 👋',
+            fontSize: 24,
+            color: AppColors.black,
+            fontWeight: FontWeight.w600,
+          ),
+          const AppText(
+            text: 'Welcome back, Sign in to your account',
+            fontSize: 16,
+          ),
           Spacing.sizedBox(height: 30.h),
           TextInputField(
-              keyboardType: TextInputType.emailAddress,
-              hintText: 'Email',
-              controller: TextEditingController()),
+              hintText: 'Email', controller: TextEditingController()),
+          Spacing.sizedBox(height: 16.h),
+          TextInputField(
+            hintText: 'password',
+            controller: TextEditingController(),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.visibility_off_outlined),
+              onPressed: () {},
+            ),
+            obscureText: true,
+          ),
           Spacing.sizedBox(height: 20.h),
+          InkWell(
+            onTap: () {},
+            child: const AppText(
+              text: 'Forgot Password?',
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primaryColor,
+            ),
+          ),
           Spacing.sizedBox(height: 20.h),
-          MainButton(
-              text: 'Sign Up',
-              onPressed: () {
-                AppRoute.navKey.currentState?.pushNamed(VerifyEmailView.route);
-              }),
+          MainButton(text: 'Sign In', onPressed: () {}),
           Spacing.sizedBox(height: 20.h),
           const IntrinsicHeight(
               child: Row(children: [
@@ -122,11 +122,11 @@ class _SignUpViewState extends State<SignUpView> {
                     fontWeight: FontWeight.w400),
                 children: [
                   TextSpan(
-                    text: 'Sign In ',
+                    text: 'Sign Up ',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         AppRoute.navKey.currentState
-                            ?.pushNamed(SignInView.route);
+                            ?.pushNamed(SignUpView.route);
                       },
                     style: const TextStyle(
                         fontSize: 16,

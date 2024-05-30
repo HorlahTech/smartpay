@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smartpay/views/auths/signin_view.dart';
 import 'package:smartpay/views/auths/signup_view.dart';
+import 'package:smartpay/views/auths/userdetails_view.dart';
+import 'package:smartpay/views/auths/verify_email_view.dart';
 import 'package:smartpay/views/onboarding/onboarding.dart';
 import 'package:smartpay/views/splash_screen/splash_screen.dart';
 import 'package:smartpay/widgets_utils/app_text.dart';
@@ -14,13 +17,18 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Onboarding.route:
         return MaterialPageRoute(builder: (_) => const Onboarding());
+      case SignInView.route:
+        return MaterialPageRoute(builder: (_) => const SignInView());
       case SignUpView.route:
         return MaterialPageRoute(builder: (_) => const SignUpView());
+      case VerifyEmailView.route:
+        return MaterialPageRoute(builder: (_) => const VerifyEmailView());
+      case UserDetailsView.route:
+        return MaterialPageRoute(builder: (_) => const UserDetailsView());
 
       default:
         return MaterialPageRoute(builder: (_) => const ErrorScreen());
     }
-    // return route;
   }
 }
 

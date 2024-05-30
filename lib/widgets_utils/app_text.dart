@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartpay/widgets_utils/app_colors.dart';
 
-
 class AppText extends StatelessWidget {
   const AppText(
       {super.key,

@@ -9,6 +9,7 @@ class ScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: appbar,
       body: SafeArea(
           child: SizedBox(

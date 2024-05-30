@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartpay/widgets_utils/app_colors.dart';
-import 'package:smartpay/widgets_utils/app_text.dart';
-import 'package:smartpay/widgets_utils/spacing.dart';
 
 class TextInputField extends StatefulWidget {
   final String hintText;
@@ -40,7 +38,7 @@ class TextInputField extends StatefulWidget {
     this.validate,
     this.hasTopPadding = false,
     this.onChanged,
-    this.borderRadius = 8,
+    this.borderRadius = 16,
     this.isNotCollapsible = true,
     this.maxLine = 1,
     this.autovalidateMode,
@@ -69,86 +67,46 @@ class _TextInputFieldState extends State<TextInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        widget.hasTopPadding
-            ? SizedBox(
-                height: 20.h,
-              )
-            : const SizedBox.shrink(),
-        widget.label != null
-            ? AppText(
-                text: widget.label!,
-                fontSize: 14.sp,
-                color: AppColors.black,
-                fontWeight: FontWeight.w500,
-              )
-            : const SizedBox.shrink(),
-        widget.label != null
-            ? Spacing.sizedBox(height: 8)
-            : const SizedBox.shrink(),
-        TextFormField(
-          autovalidateMode: widget.autovalidateMode,
-          onTap: widget.onTap,
-          obscureText: widget.obscureText,
-          onChanged: widget.onChanged,
-          maxLines: widget.maxLine,
-          enabled: widget.enabled,
-          keyboardType: widget.keyboardType,
-          controller: widget.controller,
-          onEditingComplete: widget.onEditingComplete,
-          inputFormatters: widget.inputFormatters,
-          validator: widget.validate,
-          style: TextStyle(fontSize: 13.sp, color: AppColors.black),
-          decoration: widget.isNotCollapsible
-              ? InputDecoration(
-                  errorText: widget.errorText,
-                  focusedBorder: widget.border ??
-                      OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius),
-                        borderSide: const BorderSide(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                  filled: true,
-                  fillColor: widget.fillColor,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 1.0, horizontal: 20),
-                  suffixIcon: widget.suffixIcon,
-                  prefixIcon: widget.prefixIcon,
-                  border: widget.border ??
-                      OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius),
-                        // borderSide: BorderSide(
-                        //   color: AppColors.greyBorder.withOpacity(.5),
-                        // ),
-                      ),
-                  enabledBorder: widget.border ??
-                      OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius),
-                        // borderSide: BorderSide(
-                        //   color: AppColors.greyBorder.withOpacity(.5),
-                        // ),
-                      ),
-                  hintStyle: TextStyle(
-                      fontSize: 13.sp,
-                      color: widget.hintextColor,
-                      fontWeight: FontWeight.w400),
-                  hintText: widget.hintText,
-                )
-              : InputDecoration.collapsed(
-                  hintText: widget.hintText,
-                  hintStyle: TextStyle(
-                      fontSize: 13.sp,
-                      color: widget.hintextColor,
-                      fontWeight: FontWeight.w400),
-                ),
-        ),
-      ],
-    );
+    return TextFormField(
+        autovalidateMode: widget.autovalidateMode,
+        onTap: widget.onTap,
+        obscureText: widget.obscureText,
+        onChanged: widget.onChanged,
+        maxLines: widget.maxLine,
+        enabled: widget.enabled,
+        keyboardType: widget.keyboardType,
+        controller: widget.controller,
+        onEditingComplete: widget.onEditingComplete,
+        inputFormatters: widget.inputFormatters,
+        validator: widget.validate,
+        style: TextStyle(fontSize: 13.sp, color: AppColors.black),
+        decoration: InputDecoration(
+          errorText: widget.errorText,
+          focusedBorder: widget.border ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+                borderSide:
+                    const BorderSide(color: AppColors.primaryColor, width: .5),
+              ),
+          filled: true,
+          fillColor: widget.fillColor,
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
+          suffixIcon: widget.suffixIcon,
+          prefixIcon: widget.prefixIcon,
+          border: widget.border ??
+              OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderSide: BorderSide.none),
+          enabledBorder: widget.border ??
+              OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderSide: BorderSide.none),
+          hintStyle: TextStyle(
+              fontSize: 13.sp,
+              color: widget.hintextColor,
+              fontWeight: FontWeight.w400),
+          hintText: widget.hintText,
+        ));
   }
 }

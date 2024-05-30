@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:smartpay/widgets_utils/app_colors.dart';
+import 'package:smartpay/widgets_utils/constants.dart';
 
 class AppPincodeInputField extends StatefulWidget {
   const AppPincodeInputField(
@@ -49,10 +50,13 @@ class _AppPincodeInputFieldState extends State<AppPincodeInputField> {
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(12.r),
         fieldOuterPadding: const EdgeInsets.only(left: 10),
-        fieldHeight: 56.h,
-        fieldWidth: 56.w,
-        inactiveColor: AppColors.filledColor,
+        fieldHeight: defaultSize.h,
+        fieldWidth: defaultSize.w,
+        inactiveColor: AppColors.greyBorder,
         activeColor: AppColors.filledColor,
+        selectedFillColor: AppColors.filledColor,
+        activeFillColor: AppColors.filledColor,
+        inactiveFillColor: AppColors.filledColor,
         selectedColor: AppColors.primaryColor,
       ),
     );

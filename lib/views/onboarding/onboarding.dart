@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smartpay/routes/app_routes.dart';
-import 'package:smartpay/views/auths/signup_view.dart';
+import 'package:smartpay/views/auths/signin_view.dart';
 import 'package:smartpay/views/splash_screen/splash_screen.dart';
 
 import 'package:smartpay/widgets_utils/app_buttons.dart';
@@ -178,7 +178,7 @@ class _OnboardingState extends State<Onboarding> {
                               duration: Duration(seconds: 1),
                               curve: Curves.ease)
                           : AppRoute.navKey.currentState
-                              ?.pushNamed(SignUpView.route);
+                              ?.pushNamed(SignInView.route);
                     });
               }),
           Spacing.sizedBox(height: 10),
