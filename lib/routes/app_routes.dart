@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartpay/views/auths/signup_view.dart';
 import 'package:smartpay/views/onboarding/onboarding.dart';
 import 'package:smartpay/views/splash_screen/splash_screen.dart';
 import 'package:smartpay/widgets_utils/app_text.dart';
@@ -9,12 +10,12 @@ class AppRoute {
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case SplashScreen.route:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case SplashView.route:
+        return MaterialPageRoute(builder: (_) => const SplashView());
       case Onboarding.route:
         return MaterialPageRoute(builder: (_) => const Onboarding());
-      // case SignUpScreen.route:
-      //   return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      case SignUpView.route:
+        return MaterialPageRoute(builder: (_) => const SignUpView());
 
       default:
         return MaterialPageRoute(builder: (_) => const ErrorScreen());

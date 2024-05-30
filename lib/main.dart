@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             navigatorKey: AppRoute.navKey,
             onGenerateRoute: AppRoute.onGenerateRoute,
-            initialRoute: SplashScreen.route,
+            initialRoute: SplashView.route,
             theme: ThemeData(
                 scaffoldBackgroundColor: AppColors.scaffoldBg,
                 // useMaterial3: true,
