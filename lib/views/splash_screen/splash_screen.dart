@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smartpay/routes/app_routes.dart';
+import 'package:smartpay/utils/secure_storage.dart';
+import 'package:smartpay/views/auths/signin_view.dart';
 import 'package:smartpay/views/onboarding/onboarding.dart';
 import 'package:smartpay/widgets_utils/app_colors.dart';
 import 'package:smartpay/widgets_utils/image_files.dart';
@@ -20,9 +22,22 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      AppRoute.navKey.currentState?.pushNamed(Onboarding.route);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await navigate();
     });
+  }
+
+  Future<void> navigate() async {
+    bool isFirst = await SecureStorage.getIsFirstTimer;
+    if (isFirst) {
+      Future.delayed(const Duration(seconds: 3), () {
+        AppRoute.navKey.currentState?.pushReplacementNamed(SignInView.route);
+      });
+    } else {
+      Future.delayed(const Duration(seconds: 3), () {
+        AppRoute.navKey.currentState?.pushReplacementNamed(Onboarding.route);
+      });
+    }
   }
 
   @override

@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smartpay/routes/app_routes.dart';
 import 'package:smartpay/views/auths/signin_view.dart';
+import 'package:smartpay/views/auths/signup_view.dart';
 import 'package:smartpay/views/splash_screen/splash_screen.dart';
 
 import 'package:smartpay/widgets_utils/app_buttons.dart';
@@ -44,13 +45,18 @@ class _OnboardingState extends State<Onboarding> {
       child: Column(
         children: [
           // SvgPicture.asset(AppImagesAsset.onBoardLogo),
-          const Align(
-            alignment: Alignment.topRight,
-            child: AppText(
-              text: 'Skip',
-              color: AppColors.primary50,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+          InkWell(
+            onTap: () {
+              AppRoute.navKey.currentState?.pushNamed(SignUpView.route);
+            },
+            child: const Align(
+              alignment: Alignment.topRight,
+              child: AppText(
+                text: 'Skip',
+                color: AppColors.primary50,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           Spacing.sizedBox(height: 50.h),
@@ -175,10 +181,10 @@ class _OnboardingState extends State<Onboarding> {
                     onPressed: () {
                       pageIndex == 0
                           ? _pageController.nextPage(
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               curve: Curves.ease)
                           : AppRoute.navKey.currentState
-                              ?.pushNamed(SignInView.route);
+                              ?.pushNamed(SignUpView.route);
                     });
               }),
           Spacing.sizedBox(height: 10),

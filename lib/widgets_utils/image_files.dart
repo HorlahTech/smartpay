@@ -10,4 +10,8 @@ class AppImage {
   static const String googleLogo = 'assets/image_assets/google.svg';
   static const String successIcon = 'assets/image_assets/successIcon.svg';
   static const String errorIcon = 'assets/image_assets/errorIcon.svg';
+  static const String congratsIcon = 'assets/image_assets/congrats_icon.png';
+  static const String lockIcon = 'assets/image_assets/lock_ic.svg';
+  static const String personIcon = 'assets/image_assets/person_ic.svg';
+  static const String dashHandle = 'assets/image_assets/dashHandle.svg';
 }

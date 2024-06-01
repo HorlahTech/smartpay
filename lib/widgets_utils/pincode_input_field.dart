@@ -6,16 +6,21 @@ import 'package:smartpay/widgets_utils/app_colors.dart';
 import 'package:smartpay/widgets_utils/constants.dart';
 
 class AppPincodeInputField extends StatefulWidget {
-  const AppPincodeInputField(
-      {super.key,
-      required TextEditingController pinController,
-      this.oncomplete,
-      this.onChanged})
-      : _pinController = pinController;
+  const AppPincodeInputField({
+    super.key,
+    required TextEditingController pinController,
+    this.oncomplete,
+    this.onChanged,
+    this.keyboardType,
+    this.validator,
+  }) : _pinController = pinController;
 
   final TextEditingController _pinController;
   final void Function(String)? oncomplete;
   final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+
+  final TextInputType? keyboardType;
 
   @override
   State<AppPincodeInputField> createState() => _AppPincodeInputFieldState();
@@ -27,6 +32,7 @@ class _AppPincodeInputFieldState extends State<AppPincodeInputField> {
     return PinCodeTextField(
       mainAxisAlignment: MainAxisAlignment.center,
       appContext: context,
+      enableActiveFill: true,
       length: 5,
       onChanged: widget.onChanged,
       onCompleted: widget.oncomplete,
@@ -39,6 +45,7 @@ class _AppPincodeInputFieldState extends State<AppPincodeInputField> {
       autoUnfocus: true,
       controller: widget._pinController,
       cursorColor: Colors.black,
+      validator: widget.validator,
       animationType: AnimationType.none,
       keyboardType: TextInputType.number,
       animationCurve: Curves.linear,
