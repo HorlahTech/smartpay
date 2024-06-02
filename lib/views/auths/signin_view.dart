@@ -71,6 +71,7 @@ class _SignInViewState extends State<SignInView> {
                     controller: _emailController,
                     onChanged: stateRead.onChangeEmail,
                     validate: stateRead.validateEmail,
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   Spacing.sizedBox(height: 16.h),
                   ValueListenableBuilder(

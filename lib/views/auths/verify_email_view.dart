@@ -17,6 +17,7 @@ import 'package:smartpay/widgets_utils/app_colors.dart';
 import 'package:smartpay/widgets_utils/app_text.dart';
 
 import 'package:smartpay/widgets_utils/custom_bacckicon.dart';
+import 'package:smartpay/widgets_utils/custom_keyboard.dart';
 import 'package:smartpay/widgets_utils/image_files.dart';
 
 import 'package:smartpay/widgets_utils/pincode_input_field.dart';
@@ -108,18 +109,6 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                   validator: stateRead.validatePin,
                 ),
               ),
-              MainButton(
-                  text: isPin ? "Create PIN" : 'Confirm',
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      isPin
-                          ? stateRead.setPin()
-                          : isRecovery
-                              ? AppRoute.navKey.currentState
-                                  ?.pushNamed(NewPasswordView.route)
-                              : stateRead.verifyToken();
-                    }
-                  }),
               Spacing.sizedBox(height: 20.h),
               isPin
                   ? const SizedBox.shrink()
@@ -139,7 +128,22 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                                   )),
                         );
                       },
-                    )
+                    ),
+              Spacing.sizedBox(height: 20),
+              MainButton(
+                  text: isPin ? "Create PIN" : 'Confirm',
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      isPin
+                          ? stateRead.setPin()
+                          : isRecovery
+                              ? AppRoute.navKey.currentState
+                                  ?.pushNamed(NewPasswordView.route)
+                              : stateRead.verifyToken();
+                    }
+                  }),
+              Spacing.sizedBox(height: 20),
+              CustomKeyboard(controller: _pinController),
             ],
           );
         },

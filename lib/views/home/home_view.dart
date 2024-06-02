@@ -7,6 +7,7 @@ import 'package:smartpay/utils/secure_storage.dart';
 import 'package:smartpay/widgets_utils/app_buttons.dart';
 import 'package:smartpay/widgets_utils/app_colors.dart';
 import 'package:smartpay/widgets_utils/app_text.dart';
+import 'package:smartpay/widgets_utils/custom_keyboard.dart';
 import 'package:smartpay/widgets_utils/dialog_utils.dart';
 import 'package:smartpay/widgets_utils/image_files.dart';
 import 'package:smartpay/widgets_utils/pincode_input_field.dart';
@@ -66,6 +67,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                       const AppText(
                         text: 'Enter Your pin to generate a new secret Message',
                         color: AppColors.black,
+                        textAlign: TextAlign.center,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -83,7 +85,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                 title: "Pin Error",
                                 message: "Enter a correct Pin and try Again");
                           }),
-                    ]);
+                      CustomKeyboard(controller: pinController)
+                    ], height: 550);
                     // stateRead.getSecreteMsg();
                   }),
             ],

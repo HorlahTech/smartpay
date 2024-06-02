@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -41,13 +42,14 @@ class _AppPincodeInputFieldState extends State<AppPincodeInputField> {
         color: AppColors.black,
         fontWeight: FontWeight.w500,
       ),
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       autoFocus: true,
       autoUnfocus: true,
       controller: widget._pinController,
       cursorColor: Colors.black,
       validator: widget.validator,
       animationType: AnimationType.none,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.none,
       animationCurve: Curves.linear,
       animationDuration: const Duration(milliseconds: 5),
       pinTheme: PinTheme(
